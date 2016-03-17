@@ -69,12 +69,12 @@ travis_install () {
     elif [ "$install_type" == "setup" ]; then
         python setup.py install
     elif [ "$install_type" == "sdist" ]; then
-        python setup_egg.py egg_info  # check egg_info while we're here
-        python setup_egg.py sdist
+        python setup.py egg_info  # check egg_info while we're here
+        python setup.py sdist
         wheelhouse_pip_install $EXTRA_PIP_FLAGS dist/*.tar.gz
     elif [ "$install_type" == "wheel" ]; then
         pip install wheel
-        python setup_egg.py bdist_wheel
+        python setup.py bdist_wheel
         wheelhouse_pip_install $EXTRA_PIP_FLAGS dist/*.whl
     elif [ "$install_type" == "requirements" ]; then
         wheelhouse_pip_install $EXTRA_PIP_FLAGS -r requirements.txt
